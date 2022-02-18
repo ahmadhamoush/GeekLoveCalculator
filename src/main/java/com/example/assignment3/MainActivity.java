@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         scores = (TextView) findViewById(R.id.scores);
         logo = (ImageView) findViewById(R.id.logo);
         logo.setImageDrawable(null);
+        ScrollView scroll = findViewById(R.id.scroll);
+        scroll.setFadingEdgeLength(150);
     }
 
     @Override
@@ -75,11 +78,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
            temp = new ArrayList<String>();
            Random random = new Random();
            random_number = String.valueOf(random.nextInt(MAX));
-           temp.add("Language: " + spinner.getSelectedItem().toString());
-           temp.add("Percentage: " + random_number + "%");
+           temp.add("\n" + spinner.getSelectedItem().toString() +"\t\t\t\t\t\t\t\t\t");
+           temp.add("\t\t\t\t\t\t\t\t\t" + random_number + "%");
            array.add(temp);
            percentage.setText(name.getText() + " + " + text +" = " + random_number +"%");
-           scores.setText(array.toString());
+           scores.setText(array.toString().replaceAll("\\[|\\]", "").replaceAll(", ","\t"));
 
            if(text.equalsIgnoreCase("Java")){
                logo.setImageResource(R.drawable.java);
