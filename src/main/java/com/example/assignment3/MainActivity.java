@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     TableLayout table;
     private ArrayList<List<String>> array;
     ImageView logo;
+    ArrayList<String> temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         scores.setText("");
         scores.setHint("Scores");
         percentage.setText("");
+        temp.clear();
+        array.clear();
     }
     public void generate(View v){
         String text = spinner.getSelectedItem().toString();
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
        }
        else{
            logo.setTranslationX(-2500);
-           ArrayList<String> temp = new ArrayList<String>();
+           temp = new ArrayList<String>();
            Random random = new Random();
            random_number = String.valueOf(random.nextInt(MAX));
            temp.add("Language: " + spinner.getSelectedItem().toString());
